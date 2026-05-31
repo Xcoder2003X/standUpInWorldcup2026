@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>World Cup 2026 Jumbotron Catcher | Stadium Neon Banner & Strobe</title>
+    <meta name="description" content="Turn your phone into a bright stadium banner with custom chants, fan flags, and an attention-grabbing strobe mode for big match moments.">
+    <meta name="keywords" content="World Cup 2026, Jumbotron, Stadium banner, Neon sign app, Soccer fan app, Strobe light stadium, fan flags, soccer chant display">
+    <meta name="author" content="Ayoub A.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Jumbotron Catcher">
+    <meta property="og:description" content="Create bright match-day banners and fan flags from your phone.">
+    <meta property="og:type" content="website">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQQZTBC026"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EQQZTBC026');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    boxShadow: {
+                        neon: '0 0 32px rgba(52, 211, 153, 0.22), 0 0 58px rgba(244, 63, 94, 0.14)'
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root {
+            color-scheme: dark;
+            --glow-color: #34d399;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background:
+                linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.98) 48%, rgba(17, 24, 39, 1)),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 96px);
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            box-shadow: 0 18px 60px rgba(2, 6, 23, 0.34);
+            backdrop-filter: blur(18px);
+        }
+
+        .surface {
+            background: rgba(15, 23, 42, 0.86);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+        }
+
+        .flag-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+        }
+
+        .flag-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .flag-scroll::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.42);
+            border-radius: 999px;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                opacity: 0.88;
+                text-shadow: 0 0 18px var(--glow-color), 0 0 42px var(--glow-color);
+                filter: drop-shadow(0 0 18px var(--glow-color));
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 30px var(--glow-color), 0 0 82px var(--glow-color);
+                filter: drop-shadow(0 0 34px var(--glow-color));
+            }
+        }
+
+        .neon-active {
+            animation: neonPulse 1.05s infinite ease-in-out;
+        }
+
+        @keyframes hyperStrobe {
+            0%, 48% {
+                opacity: 1;
+                filter: invert(0) drop-shadow(0 0 40px var(--glow-color));
+            }
+            49%, 100% {
+                opacity: 0.08;
+                filter: invert(0.85);
+            }
+        }
+
+        .strobe-hyper {
+            animation: hyperStrobe 0.12s infinite steps(1);
+        }
+
+        .display-text {
+            font-size: clamp(2.75rem, 13vw, 10rem);
+            line-height: 0.9;
+            overflow-wrap: anywhere;
+        }
+
+        @media (orientation: portrait) {
+            #rotate-hint { display: flex; }
+        }
+
+        @media (orientation: landscape) {
+            #rotate-hint { display: none; }
+            .display-text {
+                font-size: clamp(3.5rem, 16vw, 13rem);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .neon-active,
+            .strobe-hyper,
+            .motion-safe\:animate-pulse {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden text-white antialiased selection:bg-emerald-400/30">
+
+    <main id="dashboard" class="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-5 px-4 py-4 sm:px-6 lg:px-8 lg:py-8">
+
+        <header class="grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.28em] text-emerald-200">
+                    Match day screen
+                </div>
+                <div class="space-y-3">
+                    <h1 class="max-w-3xl text-4xl font-black uppercase leading-[0.92] tracking-normal sm:text-6xl lg:text-7xl">
+                        Jumbotron Catcher
+                    </h1>
+                    <p class="max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+                        Build a stadium-bright chant or launch a full-screen flag in seconds.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-center sm:max-w-md lg:ml-auto">
+                <div class="surface rounded-lg p-3">
+                    <p class="text-2xl font-black text-amber-300">46</p>
+                    <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Flags</p>
+                </div>
+                <div class="surface rounded-lg p-3">
+                    <p class="text-2xl font-black text-rose-300">2</p>
+                    <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Modes</p>
+                </div>
+                <div class="surface rounded-lg p-3">
+                    <p class="text-2xl font-black text-cyan-300">Full</p>
+                    <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Screen</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid flex-1 gap-5 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+            <section class="glass-panel rounded-lg p-4 sm:p-5">
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-[0.24em] text-emerald-300">Custom banner</p>
+                        <h2 class="mt-2 text-2xl font-black tracking-normal text-white sm:text-3xl">Make the screen impossible to miss.</h2>
+                    </div>
+
+                    <form id="banner-form" class="grid gap-3 sm:grid-cols-[1fr_auto]">
+                        <label class="sr-only" for="custom-text">Custom banner text</label>
+                        <input
+                            type="text"
+                            id="custom-text"
+                            maxlength="42"
+                            autocomplete="off"
+                            placeholder="GOAL! or HI MOM!"
+                            class="min-h-12 w-full rounded-lg border border-slate-600/70 bg-slate-950/80 px-4 text-base font-black uppercase text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300 focus:ring-4 focus:ring-emerald-300/10"
+                        >
+                        <button
+                            type="submit"
+                            class="min-h-12 rounded-lg bg-emerald-400 px-5 text-sm font-black uppercase tracking-wide text-slate-950 shadow-neon transition hover:bg-emerald-300 focus:outline-none focus:ring-4 focus:ring-emerald-300/30"
+                        >
+                            Flash
+                        </button>
+                    </form>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="launchTextMode('DIMA MAGHRIB', '#22c55e')" class="min-h-11 rounded-lg border border-emerald-300/20 bg-emerald-300/10 px-3 text-xs font-black uppercase tracking-wide text-emerald-100 transition hover:bg-emerald-300/20">
+                            Dima Maghrib
+                        </button>
+                        <button onclick="launchTextMode('USA! USA!', '#38bdf8')" class="min-h-11 rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-3 text-xs font-black uppercase tracking-wide text-cyan-100 transition hover:bg-cyan-300/20">
+                            USA! USA!
+                        </button>
+                    </div>
+
+                    <div class="grid gap-3 border-t border-slate-700/60 pt-4 sm:grid-cols-2">
+                        <div class="rounded-lg bg-slate-950/50 p-3">
+                            <p class="text-[11px] font-black uppercase tracking-wider text-amber-300">Landscape ready</p>
+                            <p class="mt-1 text-xs leading-5 text-slate-400">Text expands across wide screens without breaking the layout.</p>
+                        </div>
+                        <div class="rounded-lg bg-slate-950/50 p-3">
+                            <p class="text-[11px] font-black uppercase tracking-wider text-rose-300">Strobe control</p>
+                            <p class="mt-1 text-xs leading-5 text-slate-400">Turn flashing on only after the banner or flag opens.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-panel rounded-lg p-4 sm:p-5">
+                <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-[0.24em] text-amber-300">Fan flags</p>
+                        <h2 class="mt-2 text-2xl font-black tracking-normal text-white sm:text-3xl">Pick your colors.</h2>
+                    </div>
+                    <label class="relative block sm:w-64">
+                        <span class="sr-only">Search flags</span>
+                        <input
+                            type="search"
+                            id="flag-search"
+                            autocomplete="off"
+                            placeholder="Search country"
+                            class="min-h-11 w-full rounded-lg border border-slate-600/70 bg-slate-950/80 px-3 text-sm font-bold text-white outline-none transition placeholder:text-slate-500 focus:border-amber-300 focus:ring-4 focus:ring-amber-300/10"
+                        >
+                    </label>
+                </div>
+
+                <div id="flag-grid" class="flag-scroll grid max-h-[56vh] grid-cols-2 gap-2 overflow-y-auto pr-1 sm:grid-cols-3 lg:max-h-[68vh] xl:grid-cols-4"></div>
+                <p id="empty-state" class="hidden rounded-lg border border-dashed border-slate-600 p-6 text-center text-sm font-bold text-slate-400">No matching flags.</p>
+            </section>
+        </div>
+
+        <footer class="pb-4 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500">
+            Built for loud screens, fast taps, and crowded stands.
+        </footer>
+    </main>
+
+    <div id="loop-container" class="fixed inset-0 z-50 hidden cursor-pointer flex-col items-center justify-center overflow-hidden bg-black text-white">
+        <div class="pointer-events-none absolute left-3 right-3 top-3 z-50 flex items-center justify-between gap-3 sm:left-5 sm:right-5 sm:top-5">
+            <span class="rounded-full border border-white/10 bg-black/60 px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 backdrop-blur">
+                Tap anywhere to close
+            </span>
+            <button
+                id="strobe-toggle"
+                class="pointer-events-auto min-h-10 rounded-full border border-rose-300/40 bg-rose-500 px-4 text-xs font-black uppercase tracking-wide text-white shadow-[0_0_22px_rgba(244,63,94,0.58)] transition hover:bg-rose-400 focus:outline-none focus:ring-4 focus:ring-rose-300/30"
+            >
+                Strobe off
+            </button>
+        </div>
+
+        <div id="rotate-hint" class="absolute bottom-5 z-50 hidden items-center justify-center rounded-full border border-amber-300/30 bg-slate-950/88 px-4 py-2 text-xs font-black uppercase tracking-wide text-amber-200 shadow-lg backdrop-blur">
+            Turn phone sideways
+        </div>
+
+        <div id="text-wrapper" class="flex w-full items-center justify-center px-4 text-center neon-active sm:px-8">
+            <h1 id="neon-text-render" class="display-text hidden w-full max-w-[96vw] whitespace-pre-wrap text-center font-black uppercase tracking-normal text-white"></h1>
+        </div>
+
+        <div id="neon-flag-render" class="hidden h-full w-full items-center justify-center p-3 neon-active sm:p-6"></div>
+    </div>
+
+    <script>
+        let strobeActive = false;
+
+        const fanFlags = [
+            { code: "us", name: "USA" }, { code: "mx", name: "Mexico" }, { code: "ca", name: "Canada" },
+            { code: "cr", name: "Costa Rica" }, { code: "pa", name: "Panama" }, { code: "jm", name: "Jamaica" },
+            { code: "ar", name: "Argentina" }, { code: "br", name: "Brazil" }, { code: "uy", name: "Uruguay" },
+            { code: "co", name: "Colombia" }, { code: "ec", name: "Ecuador" }, { code: "ve", name: "Venezuela" },
+            { code: "fr", name: "France" }, { code: "en", name: "England" }, { code: "es", name: "Spain" },
+            { code: "de", name: "Germany" }, { code: "it", name: "Italy" }, { code: "pt", name: "Portugal" },
+            { code: "nl", name: "Netherlands" }, { code: "be", name: "Belgium" }, { code: "hr", name: "Croatia" },
+            { code: "ch", name: "Switzerland" }, { code: "dk", name: "Denmark" }, { code: "rs", name: "Serbia" },
+            { code: "pl", name: "Poland" }, { code: "tr", name: "Turkey" }, { code: "at", name: "Austria" },
+            { code: "ua", name: "Ukraine" }, { code: "ma", name: "Morocco" }, { code: "sn", name: "Senegal" },
+            { code: "eg", name: "Egypt" }, { code: "ci", name: "Ivory Coast" }, { code: "ng", name: "Nigeria" },
+            { code: "cm", name: "Cameroon" }, { code: "dz", name: "Algeria" }, { code: "gh", name: "Ghana" },
+            { code: "ml", name: "Mali" }, { code: "jp", name: "Japan" }, { code: "kr", name: "South Korea" },
+            { code: "ir", name: "Iran" }, { code: "sa", name: "Saudi Arabia" }, { code: "au", name: "Australia" },
+            { code: "qa", name: "Qatar" }, { code: "uz", name: "Uzbekistan" }, { code: "iq", name: "Iraq" },
+            { code: "nz", name: "New Zealand" }
+        ];
+
+        const dashboard = document.getElementById('dashboard');
+        const loopContainer = document.getElementById('loop-container');
+        const textWrapper = document.getElementById('text-wrapper');
+        const textRender = document.getElementById('neon-text-render');
+        const flagRender = document.getElementById('neon-flag-render');
+        const strobeToggleBtn = document.getElementById('strobe-toggle');
+        const flagGrid = document.getElementById('flag-grid');
+        const emptyState = document.getElementById('empty-state');
+        const flagSearch = document.getElementById('flag-search');
+        const bannerForm = document.getElementById('banner-form');
+        const customText = document.getElementById('custom-text');
+
+        function getFlagAsset(code, size) {
+            return code === 'en'
+                ? `https://flagcdn.com/${size}/gb-eng.png`
+                : `https://flagcdn.com/${size}/${code}.png`;
+        }
+
+        function getFlagVector(code) {
+            return code === 'en'
+                ? 'https://flagcdn.com/gb-eng.svg'
+                : `https://flagcdn.com/${code}.svg`;
+        }
+
+        function buildGallery(filter = '') {
+            const normalizedFilter = filter.trim().toLowerCase();
+            const teams = fanFlags.filter(team => team.name.toLowerCase().includes(normalizedFilter));
+            flagGrid.innerHTML = '';
+            emptyState.classList.toggle('hidden', teams.length > 0);
+
+            teams.forEach(team => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'group min-h-[92px] rounded-lg border border-slate-700/70 bg-slate-950/60 p-3 text-left transition hover:-translate-y-0.5 hover:border-amber-300/60 hover:bg-slate-900 focus:outline-none focus:ring-4 focus:ring-amber-300/15';
+                btn.setAttribute('aria-label', `Open ${team.name} flag`);
+                btn.innerHTML = `
+                    <span class="flex h-full flex-col justify-between gap-3">
+                        <img src="${getFlagAsset(team.code, 'w80')}" alt="${team.name} flag" loading="lazy" class="h-8 w-12 rounded object-cover shadow-sm ring-1 ring-white/10">
+                        <span class="block text-xs font-black uppercase leading-tight tracking-wide text-slate-200 group-hover:text-white">${team.name}</span>
+                    </span>
+                `;
+                btn.addEventListener('click', () => launchLocalFlagMode(team.code));
+                flagGrid.appendChild(btn);
+            });
+        }
+
+        function resetStrobeState() {
+            strobeActive = false;
+            textWrapper.className = 'flex w-full items-center justify-center px-4 text-center neon-active sm:px-8';
+            flagRender.className = 'hidden h-full w-full items-center justify-center p-3 neon-active sm:p-6';
+            strobeToggleBtn.textContent = 'Strobe off';
+            strobeToggleBtn.className = 'pointer-events-auto min-h-10 rounded-full border border-rose-300/40 bg-rose-500 px-4 text-xs font-black uppercase tracking-wide text-white shadow-[0_0_22px_rgba(244,63,94,0.58)] transition hover:bg-rose-400 focus:outline-none focus:ring-4 focus:ring-rose-300/30';
+        }
+
+        function setStrobeState(active) {
+            strobeActive = active;
+            textWrapper.classList.toggle('strobe-hyper', active && !textRender.classList.contains('hidden'));
+            flagRender.classList.toggle('strobe-hyper', active && !flagRender.classList.contains('hidden'));
+            strobeToggleBtn.textContent = active ? 'Strobe on' : 'Strobe off';
+            strobeToggleBtn.className = active
+                ? 'pointer-events-auto min-h-10 rounded-full border border-emerald-200/70 bg-emerald-400 px-4 text-xs font-black uppercase tracking-wide text-slate-950 shadow-[0_0_26px_rgba(52,211,153,0.78)] transition hover:bg-emerald-300 focus:outline-none focus:ring-4 focus:ring-emerald-300/30'
+                : 'pointer-events-auto min-h-10 rounded-full border border-rose-300/40 bg-rose-500 px-4 text-xs font-black uppercase tracking-wide text-white shadow-[0_0_22px_rgba(244,63,94,0.58)] transition hover:bg-rose-400 focus:outline-none focus:ring-4 focus:ring-rose-300/30';
+        }
+
+        strobeToggleBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            setStrobeState(!strobeActive);
+        });
+
+        bannerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            launchTextMode(customText.value, '#34d399');
+        });
+
+        flagSearch.addEventListener('input', (event) => {
+            buildGallery(event.target.value);
+        });
+
+        function launchTextMode(text, color) {
+            const displayText = text.trim();
+            if (!displayText) {
+                customText.focus();
+                return;
+            }
+
+            resetStrobeState();
+            flagRender.classList.add('hidden');
+            flagRender.classList.remove('flex');
+            textRender.classList.remove('hidden');
+            textRender.textContent = displayText;
+            textWrapper.style.setProperty('--glow-color', color);
+            textRender.style.color = '#ffffff';
+            openFullscreenView();
+        }
+
+        function launchLocalFlagMode(isoCode) {
+            resetStrobeState();
+            textRender.classList.add('hidden');
+            flagRender.classList.remove('hidden');
+            flagRender.classList.add('flex');
+            flagRender.innerHTML = `<img src="${getFlagVector(isoCode)}" alt="Selected country flag" class="max-h-[86svh] w-full max-w-[94vw] rounded-lg object-contain shadow-[0_0_46px_rgba(255,255,255,0.22)] ring-1 ring-white/10">`;
+            flagRender.style.setProperty('--glow-color', '#ffffff');
+            openFullscreenView();
+        }
+
+        function openFullscreenView() {
+            dashboard.classList.add('hidden');
+            loopContainer.classList.remove('hidden');
+            loopContainer.classList.add('flex');
+
+            if (loopContainer.requestFullscreen) {
+                loopContainer.requestFullscreen().catch(() => {});
+            } else if (loopContainer.webkitRequestFullscreen) {
+                loopContainer.webkitRequestFullscreen();
+            }
+        }
+
+        function closeFullscreenView() {
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+
+            loopContainer.classList.add('hidden');
+            loopContainer.classList.remove('flex');
+            dashboard.classList.remove('hidden');
+            setStrobeState(false);
+        }
+
+        loopContainer.addEventListener('click', (event) => {
+            if (event.target === strobeToggleBtn) return;
+            closeFullscreenView();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !loopContainer.classList.contains('hidden')) {
+                closeFullscreenView();
+            }
+        });
+
+        buildGallery();
+    </script>
+</body>
+</html>

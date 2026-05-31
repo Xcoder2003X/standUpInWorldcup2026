@@ -125,6 +125,10 @@
             }
         }
 
+        #loop-container.orientation-locked #rotate-hint {
+            display: none;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .neon-active,
             .strobe-hyper,
@@ -396,19 +400,42 @@
             openFullscreenView();
         }
 
+        async function lockLandscapeOrientation() {
+            if (!screen.orientation || !screen.orientation.lock) return;
+
+            try {
+                await screen.orientation.lock('landscape');
+                loopContainer.classList.add('orientation-locked');
+            } catch (error) {
+                loopContainer.classList.remove('orientation-locked');
+            }
+        }
+
+        function unlockOrientation() {
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
+            loopContainer.classList.remove('orientation-locked');
+        }
+
         function openFullscreenView() {
             dashboard.classList.add('hidden');
             loopContainer.classList.remove('hidden');
             loopContainer.classList.add('flex');
 
             if (loopContainer.requestFullscreen) {
-                loopContainer.requestFullscreen().catch(() => {});
+                loopContainer.requestFullscreen().then(lockLandscapeOrientation).catch(lockLandscapeOrientation);
             } else if (loopContainer.webkitRequestFullscreen) {
                 loopContainer.webkitRequestFullscreen();
+                lockLandscapeOrientation();
+            } else {
+                lockLandscapeOrientation();
             }
         }
 
         function closeFullscreenView() {
+            unlockOrientation();
+
             if (document.fullscreenElement && document.exitFullscreen) {
                 document.exitFullscreen().catch(() => {});
             } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
